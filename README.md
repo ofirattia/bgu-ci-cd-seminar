@@ -178,7 +178,7 @@ This job have few variations of implementations, we will go on the custom implem
 Make sure you have ```rimraf``` installed globally, run in CMD ```npm i rimraf -g``` - we are using it for cleaning a folder.
 
 ## Notes
-1. To be able to push modules to nexus you need to login via NPM to your nexus registry in order to create auth token, the token structure should be in your .npmrc file located under Users folder (C:\Users\YOUR_USER\.npmrc).
+1. To be able to push modules to nexus you need to login via NPM to your nexus registry in order to create auth token, the token structure should be in your .npmrc file located under Users folder (C:\Users\YOUR_USER\ .npmrc).
   ```js
   _auth=ZGVwbG95OmRlcGxveQ== 
   ```
