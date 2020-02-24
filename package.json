@@ -1,0 +1,45 @@
+{
+  "name": "pokedex",
+  "version": "2.0.78",
+  "author": "",
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "mocha": "^5.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.1.1",
+    "react-scripts": "latest",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "1.15.3",
+    "react-scripts": "2.1.1",
+    "redux-logger": "^3.0.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "mocha --require babel-register",
+    "eject": "react-scripts eject",
+    "travis": "npm run test && npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

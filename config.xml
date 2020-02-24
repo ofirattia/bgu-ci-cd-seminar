@@ -1,0 +1,89 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<matrix-project plugin="matrix-project@1.14">
+  <actions/>
+  <description>&#xd;
+</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.BooleanParameterDefinition>
+          <name>CREATE_HEROKU</name>
+          <description>CREATE HORUKO FOR THE FIRST TIME</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.0.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/ofirattia/pokedex</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.MessageExclusion>
+        <excludedMessage>(?s).*SKIP.*</excludedMessage>
+      </hudson.plugins.git.extensions.impl.MessageExclusion>
+    </extensions>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>* * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <axes/>
+  <builders>
+    <hudson.tasks.BatchFile>
+      <command>npm i rimraf -g</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>if &quot;%CREATE_HEROKU%&quot; == &quot;false&quot; (cd pokedex &amp;&amp; git pull)</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>if &quot;%CREATE_HEROKU%&quot; == &quot;true&quot; (rimraf pokedex &amp;&amp; git clone https://github.com/ofirattia/pokedex)</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>if &quot;%CREATE_HEROKU%&quot; == &quot;true&quot; (cd pokedex &amp;&amp; heroku create)&#xd;
+</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>cd pokedex</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>cd pokedex &amp;&amp; npm i &amp;&amp; npm run test</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>cd pokedex &amp;&amp; git add . &amp;&amp; npm version patch -m &quot;JENKINS-VERSIONING SKIP-CI [skip travis]&quot; &amp;&amp; git add -A &amp;&amp; git diff-index --quiet HEAD || git commit -m &quot;JENKINS-VERSIONING SKIP-CI [skip travis]&quot; &amp;&amp; git pull &amp;&amp; git push --force&#xd;
+&#xd;
+&#xd;
+&#xd;
+</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>cd pokedex &amp;&amp; npm publish --registry http://localhost:8081/repository/npm-local/</command>
+    </hudson.tasks.BatchFile>
+    <hudson.tasks.BatchFile>
+      <command>cd pokedex &amp;&amp; git pull &amp;&amp; git push heroku master &amp;&amp; git push origin master</command>
+    </hudson.tasks.BatchFile>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+  <executionStrategy class="hudson.matrix.DefaultMatrixExecutionStrategyImpl">
+    <runSequentially>false</runSequentially>
+  </executionStrategy>
+</matrix-project>
