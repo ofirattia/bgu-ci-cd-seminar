@@ -29,30 +29,27 @@ Your app is ready to be deployed!
 # Setup Instructions
 
 1. Make sure you have JAVA (java version "1.8.0_201") installed on your machine
-2. Git installed - [https://git-scm.com/downloads][3]
+2. Git installed - https://git-scm.com/downloads
 3. GitHub Account
 4. NodeJS - go to nodejs.org and download the LTS version.
-[3]:https://git-scm.com/downloads
+
 
 
 ## Jenkins
 
-1. Go to [https://jenkins.io/download/][1] and download the LTS according to your OS.
-[1]:https://jenkins.io/download/
+1. Go to https://jenkins.io/download/ and download the LTS according to your OS.
 2. Extract the folder to a dedicated place.
 3. Open the CMD ( Administrator Mode ), access the jenkins folder and execute the following command to start the server - ```java -jar jenkins.war``` and follow the instructions ( including installation of recommended plugins, e.g gitSCM ) once the server is up and running.
-4. If you need more information how to install it, you can see here: [https://dzone.com/articles/how-to-install-jenkins-on-windows][2]
+4. If you need more information how to install it, you can see here: https://dzone.com/articles/how-to-install-jenkins-on-windows
 
-[2]:https://dzone.com/articles/how-to-install-jenkins-on-windows
 
 ## Nexus
-1. Go to [https://www.sonatype.com/download-oss-sonatype][4] and download Nexus Repository Manager OSS 3.x
+1. Go to https://www.sonatype.com/download-oss-sonatype and download Nexus Repository Manager OSS 3.x
 2. Extract it to a dedicated folder
 3. Open the CMD (Administartor Mode ), access the nexus folder under bin via the CMD and execute the following command to start the server - ```nexus /run```
 4. default credentials are admin and admin123
 5. Server will run on port 8081
 
-[4]:https://www.sonatype.com/download-oss-sonatype
 
 ## Github
 1. If you dont have account on GitHub, create one
@@ -61,10 +58,8 @@ Your app is ready to be deployed!
 4. Run ```npm install``` and ```npm start``` to see that the app is working.
 
 ## Heroku
-1. Go to [https://devcenter.heroku.com/articles/heroku-cli#download-and-install][5] and follow the instructions to setup Heroku CLI on your machine
-[5]: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
-2. Verify your installation according to the instructions here: [https://devcenter.heroku.com/articles/heroku-cli#verifying-your-installation][6]
-[6]:https://devcenter.heroku.com/articles/heroku-cli#verifying-your-installation
+1. Go to https://devcenter.heroku.com/articles/heroku-cli#download-and-install and follow the instructions to setup Heroku CLI on your machine
+2. Verify your installation according to the instructions here: https://devcenter.heroku.com/articles/heroku-cli#verifying-your-installation
 
 
 # Create Your First App
@@ -181,3 +176,17 @@ This job have few variations of implementations, we will go on the custom implem
 ## Required NPM Modules
 
 Make sure you have ```rimraf``` installed globally, run in CMD ```npm i rimraf -g``` - we are using it for cleaning a folder.
+
+## Notes
+1. To be able to push modules to nexus you need to login via NPM to your nexus registry in order to create auth token, the token structure should be in your .npmrc file located under Users folder (C:\Users\YOUR_USER\.npmrc).
+  ```js
+  _auth=ZGVwbG95OmRlcGxveQ== 
+  ```
+  the auth string is the encoded user:password string in base64, in this sample its deploy:deploy, a user that created on nexus to allow deployments.
+
+2. On nexus you will need to create a repository, its a place to store the versions of the artifcats:
+- Open the Nexus Repository Manager user interface.
+- Click Administration in the top navigation menu, and then select Repositories.
+- Click Create repository, and then choose the npm recipe from the list, its a local repository.
+- Click Create repository to complete the form.
+- You can access your registry ( assuming you called it npm-local ) as following - http://localhost:8081/repository/npm-local/
