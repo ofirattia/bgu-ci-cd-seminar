@@ -32,6 +32,7 @@ Your app is ready to be deployed!
 2. Git installed - https://git-scm.com/downloads
 3. GitHub Account
 4. NodeJS - go to nodejs.org and download the LTS version.
+5. Workshop instructions related to Windows.
 
 
 
@@ -48,7 +49,8 @@ Your app is ready to be deployed!
 2. Extract it to a dedicated folder
 3. Open the CMD (Administartor Mode ), access the nexus folder under bin via the CMD and execute the following command to start the server - ```nexus /run```
 4. default credentials are admin and admin123
-5. Server will run on port 8081
+5. Server will run on port 8081, if you still face issues you can go to here: https://help.sonatype.com/learning/repository-manager-3/first-time-installation-and-setup/lesson-1%3A--installing-and-starting-nexus-repository-manager
+
 
 
 ## Github
