@@ -40,7 +40,7 @@ Your app is ready to be deployed!
 
 1. Go to https://jenkins.io/download/ and download the LTS according to your OS.
 2. Extract the folder to a dedicated place.
-3. Open the CMD ( Administrator Mode ), access the jenkins folder and execute the following command to start the server - ```java -jar jenkins.war``` and follow the instructions ( including installation of recommended plugins, e.g gitSCM ) once the server is up and running.
+3. Open the CMD ( Administrator Mode ), access the jenkins folder and execute the following command to start the server - ```java -jar jenkins.war``` and follow the instructions, the web interface will be opened automatically ( including installation of recommended plugins, e.g gitSCM ) once the server is up and running.
 4. If you need more information how to install it, you can see here: https://dzone.com/articles/how-to-install-jenkins-on-windows
 
 
