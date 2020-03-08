@@ -192,3 +192,5 @@ Make sure you have ```rimraf``` installed globally, run in CMD ```npm i rimraf -
 - Click Create repository, and then choose the npm recipe from the list, its a local repository.
 - Click Create repository to complete the form.
 - You can access your registry ( assuming you called it npm-local ) as following - http://localhost:8081/repository/npm-local/
+
+3. If you want to open CMD in the same context of your folder, you can write ```cmd``` on the address bar of the folder, but please note that you will have admin rights unless you defined that every cmd window will be open with admin right.
