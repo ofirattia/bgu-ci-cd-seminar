@@ -41,9 +41,13 @@ export default function(state = initialState, action) {
       }
 
     case FILTER_POKEMONS:
+      const { displayedPokemons, searchString } = action.payload
+      let filteredDisplayedPokemons = displayedPokemons.filter(pokemon => {
+        return pokemon.name.includes(searchString.toLowerCase())
+      })
       return {
         ...state,
-        displayedPokemons: action.payload
+        displayedPokemons: filteredDisplayedPokemons
       }
 
     default:

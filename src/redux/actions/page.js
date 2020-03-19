@@ -64,13 +64,13 @@ export function getPokemons() {
 
 export function filterPokemons(searchString = '') {
   return (dispatch, getState) => {
-    const displayedPokemons = getState().page.pokemons.filter(pokemon => {
-      return pokemon.name.includes(searchString.toLowerCase())
-    })
-
+    let displayedPokemons = getState().page.pokemons
     dispatch({
       type: FILTER_POKEMONS,
-      payload: displayedPokemons
+      payload: {
+        displayedPokemons,
+        searchString
+      }
     })
   }
 }
