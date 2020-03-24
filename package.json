@@ -11,18 +11,17 @@
     "react-scripts": "latest",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
-  },
-  "devDependencies": {
+    "redux-thunk": "^2.3.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
-    "prettier": "1.15.3",
-    "react-scripts": "2.1.1",
-    "redux-logger": "^3.0.6"
+    "prettier": "1.15.3"
+  },
+  "devDependencies": {
+    
   },
   "scripts": {
     "start": "react-scripts start",
