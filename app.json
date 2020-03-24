@@ -1,7 +1,7 @@
 {
   "name": "Pokedex",
   "description": "A barebones react app",
-  "repository": "https://github.com/ofirattia/pokedex",
+  "repository": "https://github.com/ofirattia/bgu-ci-cd-seminar",
   "logo": "https://cdn.rawgit.com/ofirattia/node-js-getting-started/master/public/node.svg",
   "keywords": ["node", "express", "heroku"],
   "image": "heroku/nodejs"
