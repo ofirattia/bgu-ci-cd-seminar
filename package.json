@@ -41,5 +41,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "engines": {
+    "node": "12.16.x"
   }
 }
